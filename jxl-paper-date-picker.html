@@ -1,0 +1,190 @@
+<link rel="import" href="jxl-paper-calendar.html">
+<link rel="import" href="bower_components/paper-material/paper-material.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="bower_components/iron-icons/hardware-icons.html">
+
+<dom-module id="jxl-paper-date-picker">
+
+	<style>
+
+	:host {
+		display: block;
+		width: 330px;
+		height: 400px;
+		text-align: center;
+	}
+
+	.yearHeading
+	{
+		opacity: 0.84;
+		font-size: 1em;
+		color: #FFFFFF;
+		padding: 2px 8px 2px 8px;
+		text-align: left;
+	}
+
+	.dateHeading
+	{
+		font-size: 2.2em;
+		color: #FFFFFF;
+		padding: 2px 8px 2px 8px;
+		text-align: left;
+	}
+
+	.headerBackground
+	{
+		background-color: #2196F3;
+		border-top-left-radius:2px;
+		border-top-right-radius:2px;
+	}
+
+	.wrapperPadding
+	{
+		padding: 12px;
+	}
+
+	.monthHeader
+	{
+		text-align: center;
+	}
+
+	.monthStepper
+	{
+		height: 44px;
+		line-height: 44px;
+	}
+
+	.weekdayItem.weekdayItemButton
+	{
+		padding: 0px;
+	}
+	.weekdayItem.weekdayItemButton.previousButton
+	{
+		margin-left: 0px;
+	}
+	.weekdayItem.weekdayItemButton.nextButton
+	{
+		margin-right: 0px;
+	}
+
+	.weekdayItem
+	{
+		font-size: 0.9em;
+		min-width: 40px;
+		max-width: 40px;
+		margin: 1px 2px;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		opacity: 0.54;
+	}
+
+	.calendarBackground
+	{
+		background-color: #FFFFFF;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	.marginLeft5
+	{
+		margin-left: 5px;
+	}
+
+	.marginRight5
+	{
+		margin-right: 5px;
+	}
+
+	</style>
+
+	<template>
+
+		<style include="common-styles"></style>
+
+		<paper-material elevation="1">
+
+			<div class="layout vertical headerBackground">
+				<div class="wrapperPadding layout vertical">
+					<div class="yearHeading">{{getYear(currentDate)}}</div>
+					<div class="dateHeading">{{getDateHeader(currentDate)}}</div>
+				</div>
+			</div>
+			<div class="layout vertical calendarBackground">
+				<div class="layout horizontal center-center monthStepper">
+					<paper-icon-button class="marginLeft5 weekdayItem weekdayItemButton previousButton" icon="hardware:keyboard-arrow-left" on-click="onPreviousMonth"></paper-icon-button>
+					<div class="flex monthHeader" >{{getMonth(currentDate)}}</div>
+					<paper-icon-button class="marginRight5 weekdayItem weekdayItemButton nextButton" icon="hardware:keyboard-arrow-right" on-click="onNextMonth"></paper-icon-button>
+				</div>
+			</div>
+			<jxl-paper-calendar current-date="{{currentDate}}" 
+					selected-date="{{selectedDate}}"></jxl-paper-calendar>
+
+		</paper-material>
+
+	</template>
+
+	<script>
+	Polymer({
+
+		is: "jxl-paper-date-picker",
+
+		properties: {
+
+			currentDate: {
+				type: Date,
+				value: function(){return moment()},
+				observer: "_currentDateChanged",
+				notify: true
+			},
+
+			selectedDate: {
+				type: Date,
+				value: function(){return null;},
+				observer: "_selectedDateChanged",
+				notify: true
+			}
+		},
+
+		_currentDateChanged: function(newValue, oldValue)
+		{
+
+		},
+
+		_selectedDateChanged: function(newValue, oldValue)
+		{
+
+		},
+
+		getYear: function(date)
+		{
+			return date.year();
+		},
+
+		getDateHeader: function(date)
+		{
+			return date.format("ddd, MMM D");
+		},
+
+		getMonth: function(date)
+		{
+			return date.format("MMMM YYYY")
+		},
+
+		onPreviousMonth: function()
+		{
+			this.currentDate = this.currentDate.clone().subtract(1, 'months');
+		},
+
+		onNextMonth: function()
+		{
+			this.currentDate = this.currentDate.clone().add(1, 'months');
+		}
+
+	});
+
+	</script>
+
+</dom-module>
