@@ -1,0 +1,52 @@
+{
+  "name": "jxl-paper-date-picker",
+  "version": "1.0.0",
+  "description": "Calendar and date picker for Polymer 1.x based on Material Design guidelines.",
+  "main": "jxl-paper-date-picker.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesterXL/jxl-paper-date-picker.git"
+  },
+  "keywords": [
+    "polymer",
+    "date",
+    "calendar",
+    "picker",
+    "materialdesign"
+  ],
+  "author": "Jesse Warden <jesse@jessewarden.com> (https://jessewarden.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JesterXL/jxl-paper-date-picker/issues"
+  },
+  "homepage": "https://github.com/JesterXL/jxl-paper-date-picker#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.5.2",
+    "chai": "^3.2.0",
+    "chai-things": "^0.2.0",
+    "express": "^4.13.3",
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-connect": "^0.11.2",
+    "grunt-contrib-copy": "^0.8.1",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-uglify": "^0.9.2",
+    "grunt-injector": "^0.6.0",
+    "grunt-wiredep": "^2.0.0",
+    "jshint-stylish": "^2.0.1",
+    "load-grunt-tasks": "^3.2.0",
+    "lodash": "^3.10.1",
+    "mocha": "^2.2.5",
+    "mocha-lcov-reporter": "0.0.2",
+    "serve-favicon": "^2.3.0",
+    "sinon": "^1.16.1",
+    "vulcanize": "^1.10.4",
+    "web-component-tester": "^3.3.21",
+    "wiredep": "^2.2.2"
+  }
+}
