@@ -1,6 +1,6 @@
 {
   "name": "jxl-paper-date-picker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Calendar and date picker for Polymer 1.x based on Material Design guidelines.",
   "main": "jxl-paper-date-picker.html",
   "scripts": {

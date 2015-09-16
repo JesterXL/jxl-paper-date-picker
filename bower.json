@@ -1,12 +1,15 @@
 {
   "name": "jxl-paper-date-picker",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/JesterXL/jxl-paper-date-picker",
   "authors": [
     "JesterXL <jesse@jessewarden.com>"
   ],
   "description": "Calendar and date picker for Polymer 1.x based on Material Design guidelines.",
-  "main": "jxl-paper-date-picker.html",
+  "main": [
+  	"jxl-paper-date-picker.html",
+  	"jxl-paper-calendar.html"
+  ],
   "keywords": [
     "polymer",
     "date",
