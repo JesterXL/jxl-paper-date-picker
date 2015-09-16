@@ -1,0 +1,46 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+
+<dom-module id="jxl-demo">
+
+	<template>
+
+		<div class="layout vertical" selected-date="{{selectedDate}}">
+    		<jxl-paper-date-picker selected-date="{{selectedDate}}"></jxl-paper-date-picker>
+    		<br />
+    		<br />
+    		<br />
+    		<br />
+    		<span><b>Selected Date:</b> <span>{{getPrettyDate(selectedDate)}}</span></span>
+    	</div>
+
+	</template>
+
+	<script>
+	Polymer({
+
+		is: "jxl-demo",
+
+		properties: {
+
+			selectedDate: {
+				type: Date,
+				value: function(){return null;},
+				notify: true
+			}
+		},
+
+		getPrettyDate: function(date)
+		{
+			if(moment.isMoment(date) === false)
+			{
+				return "???";
+			}
+			return date.format("dddd, MMMM Do YYYY");
+		}
+	});
+
+	</script>
+
+</dom-module>
