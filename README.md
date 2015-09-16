@@ -26,6 +26,21 @@ While she peforms fine, I'm not too happy about the CSS wrapping strategy, nor a
 
 Why 2 calendars? If you notice the Material Design video, the only way to 2 animate 2 calendars like that is if you actually have 2 calendars. I've done this in my Flash days, and you just cycle 2 components in and out. Haven't started on that yet, but y'all are welcome to dive deep into neon land if you wish.
 
+##Bower
+
+I haven't got Bower working yet. She's registered, but for now the components are hardcoded to bower_components, which is awful. It should be a relative path like the official Polymer components use. Basically this:
+
+```html
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+```
+Should be made to be relative.
+
+##DevOps
+
+Gruntfile is a work in process. I've got Vulcan working in another project. JSHint for now is the only really useful task.
+
 
 # Changelog
 
