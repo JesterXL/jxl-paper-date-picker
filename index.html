@@ -31,6 +31,11 @@
       -webkit-touch-callout: none;
     }
 
+    .padder
+    {
+    	padding: 8px;
+    }
+
     </style>
 
     
@@ -38,14 +43,16 @@
 </head>
 <body class="fullbleed layout vertical">
     
-    <div class="layout horizontal">
+    <div class="layout horizontal" style="margin: 8px;">
     	<jxl-paper-calendar></jxl-paper-calendar>
+    	<div class="padder"></div>
     	<jxl-paper-date-picker></jxl-paper-date-picker>
+    	<div class="padder"></div>
     	<jxl-paper-date-picker>
     		<div class="layout horizontal">
     			<div class="flex"></div>
-    			<paper-button>Cancel</paper-button>
-    			<paper-button>OK</paper-button>
+    			<paper-button style="color: #2196F3;">Cancel</paper-button>
+    			<paper-button style="color: #2196F3;">OK</paper-button>
     		</div>
     	</jxl-paper-date-picker>
     </div>
