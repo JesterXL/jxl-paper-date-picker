@@ -1,0 +1,108 @@
+<link rel="import" href="bower_components/iron-icons/notification-icons.html">
+<link rel="import" href="bower_components/paper-input/paper-input.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="jxl-paper-date-picker.html">
+
+<dom-module id="jxl-date-field">
+	
+	<style>
+		:host {
+			width: 200px;
+		}
+
+		#dateField
+		{
+			width: 160px;
+		}
+
+		jxl-paper-date-picker {
+			position: relative;
+			top: calc(this.$.dateField.bottom);
+			left: calc(this.$.dateField.right);
+		}
+
+	</style>
+
+	<template>
+
+		<paper-input id="dateField" value="{{getPrettyDate(selectedDate)}}">
+			<paper-icon-button suffix
+				icon="notification:event-note"
+				readonly="true"
+				on-tap="toggleDatePicker"></paper-icon-button>
+		</paper-input>
+		<template is="dom-if" if="{{showPicker}}">
+			<jxl-paper-date-picker selected-date="{{selectedDate}}"
+				on-mouseup="onDateUp"></jxl-paper-date-picker>
+		</template>
+
+	</template>
+
+	<script>
+	Polymer({
+
+		is: "jxl-date-field",
+
+		properties: {
+
+			selectedDate: {
+				type: Date,
+				value: function(){return null;},
+				notify: true
+			}
+		},
+
+		showPicker: false,
+		_windowMouseDelegate: null,
+
+		attached: function()
+		{
+			var me = this;
+			this._windowMouseDelegate = function(e)
+			{
+				me.onWindowUp(e);
+			};
+		},
+
+		getPrettyDate: function(date)
+		{
+			if(moment.isMoment(date) === false)
+			{
+				return "???";
+			}
+			return date.format("MMM Do, YYYY");
+		},
+
+		toggleDatePicker: function()
+		{
+			this.showPicker = !this.showPicker;
+			if(this.showPicker)
+			{
+				this.listenForMouseOutside();
+			}
+		},
+
+		listenForMouseOutside: function()
+		{
+			window.addEventListener("mouseup", this._windowMouseDelegate);
+		},
+
+		killWindowMouseEvent: function()
+		{
+			window.removeEventListener("mouseup", this._windowMouseDelegate);
+		},
+
+		onDateUp: function(event)
+		{
+			event.stopImmediatePropagation();
+		},
+
+		onWindowUp: function(event)
+		{
+			this.toggleDatePicker();
+		}
+	});
+
+	</script>
+
+</dom-module>
