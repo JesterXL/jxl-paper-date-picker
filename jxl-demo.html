@@ -1,19 +1,41 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="jxl-date-field.html">
 
 <dom-module id="jxl-demo">
 
 	<template>
 
-		<div class="layout vertical" selected-date="{{selectedDate}}">
-    		<jxl-paper-date-picker selected-date="{{selectedDate}}"></jxl-paper-date-picker>
-    		<br />
-    		<br />
-    		<br />
-    		<br />
-    		<span><b>Selected Date:</b> <span>{{getPrettyDate(selectedDate)}}</span></span>
-    	</div>
+		<div class="layout vertical">
+			<div class="layout horizontal" style="margin: 8px;">
+		    	<jxl-paper-calendar></jxl-paper-calendar>
+		    	<div class="padder"></div>
+		    	<div class="layout vertical" selected-date="{{selectedDate}}">
+		    		<jxl-paper-date-picker selected-date="{{selectedDate}}"></jxl-paper-date-picker>
+		    		<br />
+		    		<br />
+		    		<br />
+		    		<br />
+		    		<span><b>Selected Date:</b> <span>{{getPrettyDate(selectedDate)}}</span></span>
+		    	</div>
+		    	<div class="padder"></div>
+		    	<jxl-paper-date-picker>
+		    		<div class="layout horizontal">
+		    			<div class="flex"></div>
+		    			<paper-button style="color: #2196F3;">Cancel</paper-button>
+		    			<paper-button style="color: #2196F3;">OK</paper-button>
+		    		</div>
+		    	</jxl-paper-date-picker>
+		    </div>
+
+		    <div class="layout horizontal">
+		    	<jxl-date-field></jxl-date-field>
+		    	<p>So, uh....</p>
+		    </div>
+		</div>
+
+			
 
 	</template>
 

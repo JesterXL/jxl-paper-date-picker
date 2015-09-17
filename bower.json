@@ -7,8 +7,8 @@
   ],
   "description": "Calendar and date picker for Polymer 1.x based on Material Design guidelines.",
   "main": [
-  	"jxl-paper-date-picker.html",
-  	"jxl-paper-calendar.html"
+    "jxl-paper-date-picker.html",
+    "jxl-paper-calendar.html"
   ],
   "keywords": [
     "polymer",
@@ -38,6 +38,7 @@
     "lodash": "~3.10.1",
     "moment-range": "~2.0.3",
     "moment": "~2.10.6",
-    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.3"
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.3",
+    "paper-input": "PolymerElements/paper-input#~1.0.14"
   }
 }
