@@ -2,7 +2,7 @@
 
 Calendar and date picker for Polymer 1.x based on [Material Design guidelines](https://www.google.com/design/spec/components/pickers.html#pickers-date-pickers).
 
-## Date Picker
+## Date Picker & Date Field
 ![logo](jxl-paper-date-picker-and-field.png)
 
 # Instructions
