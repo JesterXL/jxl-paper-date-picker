@@ -2,7 +2,8 @@
 
 Calendar and date picker for Polymer 1.x based on [Material Design guidelines](https://www.google.com/design/spec/components/pickers.html#pickers-date-pickers).
 
-![logo](jxl-paper-date-picker.png)
+## Date Picker
+![logo](jxl-paper-date-picker-and-field.png)
 
 # Instructions
 
@@ -29,11 +30,13 @@ this.$.customPicker.currentDate = moment('01/19/2014', 'MM DD YYYY');
 ```
 
 To bind to a field:
+
 ```html
 <jxl-paper-date-picker selected-date="{{selectedDate}}"></jxl-paper-date-picker>
 <br />
 <b>Selected Date:</b> <span>{{getPrettyDate(selectedDate)}}</span>
 ```
+
 ```javascript
 properties: {
 	selectedDate: null,
