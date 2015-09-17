@@ -1,6 +1,6 @@
 {
   "name": "jxl-paper-date-picker",
-  "version": "0.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/JesterXL/jxl-paper-date-picker",
   "authors": [
     "JesterXL <jesse@jessewarden.com>"
@@ -8,7 +8,8 @@
   "description": "Calendar and date picker for Polymer 1.x based on Material Design guidelines.",
   "main": [
     "jxl-paper-date-picker.html",
-    "jxl-paper-calendar.html"
+    "jxl-paper-calendar.html",
+    "jxl-paper-date-field.html"
   ],
   "keywords": [
     "polymer",
@@ -17,6 +18,10 @@
     "picker",
     "materialdesign"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:JesterXL/jxl-paper-date-picker.git"
+  },
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -39,6 +44,7 @@
     "moment-range": "~2.0.3",
     "moment": "~2.10.6",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.3",
-    "paper-input": "PolymerElements/paper-input#~1.0.14"
+    "paper-input": "PolymerElements/paper-input#~1.0.14",
+    "web-animations-js": "~2.1.2"
   }
 }
