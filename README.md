@@ -36,9 +36,9 @@ To bind to a field:
 ```
 ```javascript
 properties: {
-	selectedDate: null,		type: Date,
-		value: function(){return null;}
-	}
+	selectedDate: null,
+	type: Date,
+	value: function(){return null;}
 },
 
 getPrettyDate: function(date)
