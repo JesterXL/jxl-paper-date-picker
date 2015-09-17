@@ -19,7 +19,35 @@ To use the date picker:
 ```html
 <jxl-paper-date-picker></jxl-paper-date-picker>
 ```
+To set the selected date, use a moment date:
 
+```javascript
+<jxl-paper-date-picker id="customPicker"></jxl-paper-date-picker>
+...
+this.$.customPicker.currentDate = moment('01/19/2014', 'MM DD YYYY');
+```
+
+To bind to a field:
+```html
+<jxl-paper-date-picker selected-date="{{selectedDate}}"></jxl-paper-date-picker>
+<br />
+<b>Selected Date:</b> <span>{{getPrettyDate(selectedDate)}}</span>
+...
+properties: {
+	selectedDate: null,		type: Date,
+		value: function(){return null;}
+	}
+},
+
+getPrettyDate: function(date)
+{
+	if(moment.isMoment(date) === false)
+	{
+		return "???";
+	}
+	return date.format("dddd, MMMM Do YYYY");
+},
+```
 
 
 
