@@ -2,13 +2,23 @@
 <link rel="import" href="bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="bower_components/paper-button/paper-button.html">
 <link rel="import" href="jxl-date-field.html">
+<link rel="import" href="bower_components/paper-input/paper-input.html">
 
 <dom-module id="jxl-demo">
+
+	<style>
+
+	.padder
+    {
+    	padding: 8px;
+    }
+
+	</style>
 
 	<template>
 
 		<div class="layout vertical">
-			<div class="layout horizontal" style="margin: 8px;">
+			<div class="layout horizontal wrap" style="margin: 8px;">
 		    	<jxl-paper-calendar></jxl-paper-calendar>
 		    	<div class="padder"></div>
 		    	<div class="layout vertical" selected-date="{{selectedDate}}">
@@ -27,12 +37,28 @@
 		    			<paper-button style="color: #2196F3;">OK</paper-button>
 		    		</div>
 		    	</jxl-paper-date-picker>
+		    	<div class="padder"></div>
+		    	<div class="layout vertical">
+		    		<h3>Enter a date and click "Set" to update the Date Picker</h3>
+			    	<div class="layout horizontal">
+			    		<!-- note: i tried paper-input-container, I have no clue why it doesn't work -->
+			    		<paper-input id="customDateInput" 
+			    			label="month/day/year"
+			    			invalid="{{customDateValid}}"
+			    			errorMessage="{{customDateValidError}}"></paper-input>
+			    		<paper-button on-tap="onSetCustomDate" raised>Set</paper-button>
+			    	</div>
+			    	<br />
+			    	<jxl-paper-date-picker id="customPicker"></jxl-paper-date-picker>
+		    	</div>
+
+		    	<div class="layout horizontal">
+			    	<jxl-date-field></jxl-date-field>
+			    	<p>So, uh....</p>
+			    </div>
+
 		    </div>
 
-		    <div class="layout horizontal">
-		    	<jxl-date-field></jxl-date-field>
-		    	<p>So, uh....</p>
-		    </div>
 		</div>
 
 			
@@ -50,7 +76,10 @@
 				type: Date,
 				value: function(){return null;},
 				notify: true
-			}
+			},
+
+			customDateValid: true,
+			customDateValidError: "",
 		},
 
 		getPrettyDate: function(date)
@@ -60,6 +89,67 @@
 				return "???";
 			}
 			return date.format("dddd, MMMM Do YYYY");
+		},
+
+		onSetCustomDate: function()
+		{
+			try
+			{
+				console.log("jxl-demo::onSetCustomDate");
+				var dateStr = this.$.customDateInput.value;
+				if(_.isNull(dateStr) || _.isUndefined(dateStr))
+				{
+					this.customDateValid = false;
+					this.customDateValidError = "It's null or undefined, brah.";
+					return;
+				}
+				console.log("she ain't null");
+				if(dateStr.indexOf("/") < 0)
+				{
+					this.customDateValid = false;
+					this.customDateValidError = "No slashes detected, homey.";
+					return;
+				}
+				console.log("she has a slash");
+				var dateArray = dateStr.split("/");
+				if(dateArray.length !== 3)
+				{
+					this.customDateValid = false;
+					this.customDateValidError = "Not enough slashes, bro.";
+					return;
+				}
+				console.log("she has enough slashes");
+				var year = dateArray[2];
+				var month = dateArray[0];
+				var day = dateArray[1];
+				var notBread = _.negate(_.isNaN);
+				if(_.every([year, month, day], notBread) === false)
+				{
+					this.customDateValid = false;
+					this.customDateValidError = "One of your values is NaN, playa.";
+					return;
+				}
+				console.log("no values are high glycemic carbs");
+
+				if(year.toString().length === 2)
+				{
+					year = "20" + year.toString();
+				}
+
+				if(month.toString().length === 1)
+				{
+					month = "0" + month.toString();
+				}
+
+				var date = moment(year + " " + month + " " + day, "YYYY MM DD");
+				console.log("date:", date);
+				this.$.customPicker.currentDate = date;
+			}
+			catch(err)
+			{
+				console.error("onSetCustomDate, error:", err);
+			}
+
 		}
 	});
 

@@ -12,6 +12,17 @@ Calendar and date picker for Polymer 1.x based on [Material Design guidelines](h
 
 To see demo, run `node server.js`
 
+# Example
+
+To use the date picker:
+
+```html
+<jxl-paper-date-picker></jxl-paper-date-picker>
+```
+
+
+
+
 # Contributors
 
 ##Features
