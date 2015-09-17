@@ -47,13 +47,14 @@
 
 			selectedDate: {
 				type: Date,
-				value: function(){return null;},
+				value: function(){return moment();},
 				notify: true
 			}
 		},
 
 		showPicker: false,
 		_windowMouseDelegate: null,
+		_addedDelegate: false,
 
 		attached: function()
 		{
@@ -73,33 +74,50 @@
 			return date.format("MMM Do, YYYY");
 		},
 
-		toggleDatePicker: function()
+		toggleDatePicker: function(event)
 		{
+			console.log("toggleDatePicker, is:", this.showPicker);
+			if(event)
+			{
+				event.stopImmediatePropagation();
+			}
 			this.showPicker = !this.showPicker;
 			if(this.showPicker)
 			{
 				this.listenForMouseOutside();
 			}
+			else
+			{
+				this.killWindowMouseEvent();
+			}
 		},
 
 		listenForMouseOutside: function()
 		{
-			window.addEventListener("mouseup", this._windowMouseDelegate);
+			console.log("listenForMouseOutside");
+			if(this._addedDelegate === false)
+			{
+				window.addEventListener("mouseup", this._windowMouseDelegate);
+			}
 		},
 
-		killWindowMouseEvent: function()
+		hidePicker: function()
 		{
-			window.removeEventListener("mouseup", this._windowMouseDelegate);
+			this.showPicker = false;
 		},
 
 		onDateUp: function(event)
 		{
+			console.log("onDateUp");
 			event.stopImmediatePropagation();
 		},
 
 		onWindowUp: function(event)
 		{
-			this.toggleDatePicker();
+			if(this.showPicker)
+			{
+				this.hidePicker();
+			}
 		}
 	});
 
